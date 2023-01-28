@@ -1,0 +1,9 @@
+{
+  "env": {
+    "NODE_ENV": "development",
+    "TS_NODE_PROJECT": "tsconfig.json"
+  },
+  "exec": "node --inspect=0.0.0.0:8099 --require ts-node/register --require tsconfig-paths/register ./src/index.ts",
+  "ext": "ts,json",
+  "verbose": true
+}

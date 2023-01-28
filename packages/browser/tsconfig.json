@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["**/*.ts", "**/*.tsx", "types"],
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./",
+    "jsx": "preserve",
+    "lib": ["dom", "es2017"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "paths": {
+      "components/*": ["src/components/*"],
+      "core/*": ["src/core/*"],
+      "lib/*": ["src/lib/*"],
+      "maps/*": ["src/maps/*"],
+      "models/*": ["src/models/*"],
+      "scenes/*": ["src/scenes/*"],
+      "ui/*": ["src/ui/*"],
+      "types/*": ["types/*"]
+    },
+    "rootDir": "src",
+    "target": "esnext",
+    "types": ["@seawars/game"]
+  }
+}

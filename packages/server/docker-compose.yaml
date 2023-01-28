@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  node:
+    build: ./build
+    ports:
+      - '5000:5000'
+    env_file: .env
+    depends_on:
+      - db
+    volumes:
+      - ./:/server-app
+  db:
+    image: postgres:13
+    restart: always
+    env_file: .env
+    container_name: seawars-db
+    ports:
+      - '5439:5432'

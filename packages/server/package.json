@@ -1,0 +1,57 @@
+{
+  "name": "@seawars/server",
+  "version": "1.0.0-alpha.1",
+  "private": true,
+  "author": {
+    "name": "Benjamin Such"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "yarn clean && yarn workspace @seawars/game build:server && tsc -p ./",
+    "clean": "npx rimraf build",
+    "deploy": "git push heroku main",
+    "deploy:dev": "git push heroku 1.x.x:main",
+    "dev": "dotenv -e .env.local -- nodemon --watch ../game/build/index.cjs.js --watch src",
+    "lint": "eslint .",
+    "logs": "heroku logs --tail",
+    "start": "node -r tsconfig-paths/register build/index.js"
+  },
+  "prisma": {
+    "seed": "node -r tsconfig-paths/register prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.5.0",
+    "@seawars/game": "workspace:packages/game",
+    "chalk": "4.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "prisma": "^3.5.0",
+    "randomstring": "^1.2.2",
+    "rpc-websockets": "^7.4.16",
+    "tsconfig-paths": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/cors": "^2.8.12",
+    "@types/eslint": "^7",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.4",
+    "@types/randomstring": "^1",
+    "@types/rimraf": "^3",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "dotenv-cli": "^4.1.0",
+    "eslint": "7",
+    "jest": "^27.3.1",
+    "jest-mock-extended": "^2.0.4",
+    "nodemon": "^2.0.14",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4"
+  }
+}

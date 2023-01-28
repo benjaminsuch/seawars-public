@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "exclude": ["**/*.test.ts"],
+  "include": ["src/**/*", "types"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "isolatedModules": false,
+    "lib": ["esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "build",
+    "paths": {
+      "common/*": ["src/common/*"],
+      "components/*": ["src/components/*"],
+      "core/*": ["src/core/*"],
+      "lib/*": ["src/lib/*"],
+      "src/*": ["src/*"],
+      "types/*": ["types/*"]
+    },
+    "removeComments": true,
+    "rootDir": "src",
+    "target": "esnext"
+  }
+}

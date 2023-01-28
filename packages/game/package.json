@@ -1,0 +1,72 @@
+{
+  "name": "@seawars/game",
+  "version": "1.0.0-alpha.1",
+  "private": true,
+  "engines": {
+    "node": ">=14"
+  },
+  "author": {
+    "name": "Benjamin Such"
+  },
+  "main": "build/index.cjs.js",
+  "module": "build/index.esm.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build",
+    "src"
+  ],
+  "scripts": {
+    "api:serve": "reload -p 3001 -d api -w build -b",
+    "api:watch": "watch 'typedoc --out api' src",
+    "build": "yarn build:types && node scripts/build.js",
+    "build:cjs": "BUILD_TARGET=cjs yarn build",
+    "build:client": "GAME_BUILD_TYPE=client yarn build",
+    "build:server": "GAME_BUILD_TYPE=server yarn build:cjs",
+    "build:types": "tsc -p ./ --declaration --emitDeclarationOnly",
+    "clean": "npx rimraf build",
+    "dev": "watch 'yarn build:server && yarn build:client' src",
+    "lint": "eslint src",
+    "test": "jest -i --verbose"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/randomstring": "^1",
+    "@types/rimraf": "^3",
+    "@types/three": "^0.134.0",
+    "@types/uuid": "^8",
+    "@types/watch": "^1",
+    "@types/ws": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "chalk": "4.1.2",
+    "dotenv-cli": "^4.0.0",
+    "esbuild": "^0.14.23",
+    "esbuild-node-externals": "^1.4.1",
+    "esbuild-plugin-copy": "^0.4.0",
+    "eslint": "7",
+    "jest": "^27.2.4",
+    "jest-mock-extended": "^2.0.4",
+    "reload": "^3.2.0",
+    "rimraf": "^3.0.2",
+    "rpc-websockets": "^7.4.17",
+    "serve": "^13.0.2",
+    "three": "^0.137.5",
+    "ts-jest": "^27.0.5",
+    "ts-toolbelt": "^9.6.0",
+    "typedoc": "^0.22.10",
+    "typescript": "^4.5.5",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "fast-deep-equal": "^3.1.3",
+    "randomstring": "^1.2.2",
+    "uuid": "^8.3.2",
+    "zustand": "^3.7.2"
+  },
+  "peerDependencies": {
+    "chalk": "4.1.2",
+    "rpc-websockets": "^7.4.16",
+    "three": "^0.135.0"
+  }
+}

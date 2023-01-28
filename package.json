@@ -1,0 +1,30 @@
+{
+  "name": "root",
+  "private": true,
+  "engines": {
+    "node": "14.x",
+    "yarn": "3.x"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:browser": "yarn workspace @seawars/browser build",
+    "build:game": "yarn workspace @seawars/game build",
+    "build:server": "yarn workspace @seawars/server build",
+    "clean": "npx rimraf node_modules",
+    "dev:browser": "yarn workspace @seawars/browser dev",
+    "dev:game": "yarn workspace @seawars/game dev",
+    "dev:server": "yarn workspace @seawars/server dev",
+    "lint": "yarn workspaces foreach -p run lint",
+    "prepare": "husky install",
+    "heroku-postbuild": "yarn workspace @seawars/game clean && yarn build:server"
+  },
+  "packageManager": "yarn@3.0.2",
+  "devDependencies": {
+    "husky": "^7.0.4"
+  },
+  "resolutions": {
+    "three": "0.135.0"
+  }
+}
